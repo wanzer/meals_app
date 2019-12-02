@@ -4,15 +4,20 @@ import 'package:path/path.dart';
 
 class CategoryItem extends StatelessWidget {
 
+  final String id;
   final String title;
   final Color color;
 
-  CategoryItem(this.title, this.color);
+  CategoryItem(this.id, this.title, this.color);
 
   void openCategory(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (_){
-      return CategoryMealScreen();
-      }));
+
+    Navigator.pushNamed(context, '/categories_screen', arguments: {'id':id, 'title':title});
+
+    //basic navigation way
+//    Navigator.push(context, MaterialPageRoute(builder: (_){
+//      return CategoryMealScreen();
+//      }));
   }
 
   @override
