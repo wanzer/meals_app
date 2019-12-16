@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/screens/categoriesScreen.dart';
 import 'package:meals_app/screens/favoritesScreen.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
+
+  static const String tabsRout = '/tabs-rout';
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  
+  //example of Tab Layout
   Widget setTablayout() {
     return DefaultTabController(
       length: 2,
@@ -47,6 +52,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(_pages[_selectPageIndex]['title']),
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
