@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/screens/favoritesScreen.dart';
 import 'package:meals_app/screens/mealDetailScreen.dart';
+import 'package:meals_app/screens/tabsScreen.dart';
 import './screens/categoriesScreen.dart';
 import './screens/categoryMealScreen.dart';
 
@@ -60,12 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
+    return
+//      Scaffold(
+//      appBar: AppBar(
         
-        title: Text(widget.title),
-      ),
-      body: CategoriesScreen(),
-      );
+       // title: Text(widget.title),
+      //),
+      //body: CategoriesScreen(),
+      TabsScreen();
+      //);
   }
 }
