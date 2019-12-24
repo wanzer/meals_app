@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/categoriesScreen.dart';
 import 'package:meals_app/screens/favoritesScreen.dart';
 import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
+  final List<Meal> favoriteMeal;
+
+  TabsScreen(this.favoriteMeal);
 
   static const String tabsRout = '/tabs-rout';
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  
-  //example of Tab Layout
+
+
+  //example of Tab Layout, not in use for now
   Widget setTablayout() {
     return DefaultTabController(
       length: 2,
@@ -27,16 +33,22 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         ),
         body: TabBarView(
-          children: <Widget>[CategoriesScreen(), FavoritesScreen()],
+          children: <Widget>[CategoriesScreen(), FavoritesScreen(widget.favoriteMeal)],
         ),
       ),
     );
   }
 
-  List<Map<String, Object>> _pages = [
-    {'page': CategoriesScreen(), 'title': "Categories"},
-    {'page': FavoritesScreen(), 'title': "Favorites"}
-  ];
+  List<Map<String, Object>> _pages;
+
+  @override
+  initState(){
+    _pages = [
+      {'page': CategoriesScreen(), 'title': "Categories"},
+      {'page': FavoritesScreen(widget.favoriteMeal), 'title': "Favorites"}
+    ];
+    super.initState();
+  }
 
   int _selectPageIndex = 0;
 
